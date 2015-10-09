@@ -67,15 +67,19 @@ h5 {
   font-size: 14px;
   color: #999;
   line-height: 16px;
-  float: left;
 }
+
+.school-txt:first-of-type {
+  color: green;
+}
+
 
 .location-text {
   font-style: italic;
   font-size: 14px;
   color: #999;
   line-height: 16px;
-  float: right;
+  
 
 }
 
@@ -97,6 +101,7 @@ a {
   font-size: 18px;
   color: #f3f3f3;
   line-height: 28px;
+  display: flex;
 }
 
 #skills-h3 {
@@ -139,6 +144,10 @@ a {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
+}
+
+.flex-item {
+  display:inline-block;
 }
 
 .center-content {
@@ -192,6 +201,9 @@ span {
   .welcome-message {
     display: none;
   }
+  p {
+    display: flex;
+  }
 }
 
 #map {
@@ -204,6 +216,7 @@ span {
   height: 400px;
   width: 100%;
   padding-bottom: 5%;
+
 }
 
 @media only screen and (min-width: 750px) {
@@ -211,4 +224,5 @@ span {
   .biopic {
     display: block;
   }
+
 }
