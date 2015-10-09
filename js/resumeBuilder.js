@@ -9,21 +9,27 @@ var formattedRole = HTMLheaderRole.replace(
 $("#header").prepend (formattedName);
 $("#header").append (formattedRole);
 
+var contactGeneric = 
+	["Mobile", "Email", "github", "Twitter", "Location"];
+
 var skills = 
-	["Management", "Programming", "Network Operations", "Data Analysis"];
+	["Management", "Programming", "Network Operations", "Data Analysis"];	
 
 var bio = {
 	"name": "Clifton Mauldin",
-	"contact": 
-	[
+	"contacts": 
+	[	
 		{
-			"phone": "817-992-3298",
+			"mobile": "817-992-3298",
 			"email": "cam94@att.net",
-			"location": "Dallas/Fort Worth Metrolex",
-			
+			"github": "cmdre94",
+			"twitter": "@CCamauldin",
+			"location": "Mansfield, TX"	
 		}	
 	],
-	"skills": skills
+	"welcomeMessage": "Welcome to my resume.",
+	"skills": skills,
+	"bioPic": "images/fry.jpg"
 }
 
 var work = {
@@ -54,28 +60,29 @@ var work = {
 }
 
 var education = {
+	"schools" : 
+	[
+		{
+			"name": "The University of North Texas",
+			"dates": "2000 to 2004",
+			"location": "Denton, TX",
+			"degree": "Bachelor of Business Administration",
+			"major": "General Business"
+		},
+		{
+			"name": "Eastfield College",
+			"dates": "2004 to 2006",
+			"location": "Mesquite, TX",
+			"degree": "Electronic Telecommunications Certificate",
+			"major": "Electronics and Telecommunications"
+		}
+	],
 	"onlineCourse": 
 	[
 		{
 			"name": "Udacity",
 			"course": "Front End Web Developer Nanodegree",
 			"URL": "udacity.com"
-		}
-	],
-
-	"schools" : 
-	[
-		{
-			"name": "The University of North Texas",
-			"city": "Denton, TX",
-			"degree": "Bachelors of Business Administration",
-			"magor": ["General Business"] 
-		},
-		{
-			"name": "Eastfield College",
-			"city": "Mesquite, TX",
-			"degree": "Electronic Telecommunications Certificate",
-			"major": ["Electronics and Telecommunications"]
 		}
 	]
 }
@@ -104,7 +111,27 @@ var projects = {
 	]
 }
 
-//$("#main").append(education.schools[1].name);
+function displayContacts() {
+	for (contact in bio.contacts) {
+		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts[contact].mobile);
+		$("#header").append(formattedMobile);
+
+		var formattedEmail = HTMLemail.replace("%data%", bio.contacts[contact].email);
+		$("#header").append(formattedEmail);
+
+		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts[contact].github);
+		$("#header").append(formattedGithub);
+
+		var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts[contact].twitter);
+		$("#header").append(formattedTwitter);
+
+		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts[contact].location);
+		$("#header").append(formattedLocation);
+
+	}
+}
+
+displayContacts();
 
 if (bio.skills.length > 0) { 
 	$("#header").append(HTMLskillsStart);
@@ -150,7 +177,6 @@ function displayWork() {
 
 displayWork();
 $(document).click(function(loc) {
-
 });
 
 projects.display = function() {
@@ -166,19 +192,36 @@ projects.display = function() {
 		var formattedDesc = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
 		$(".project-entry:last").append(formattedDesc);
 
-		//if (projects.projects[project].images.length > 0) {
-			//for (image in projects.projects[project].images) {
-				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
-				$(".project-entry:last").append(formattedImage);
-			//}
+		var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+		$(".project-entry:last").append(formattedImage);
 		}
 
 	}
 
  projects.display();
 
+function displayEducation() {
+	for (school in education.schools) {
+		$("#education").append(HTMLschoolStart);
 
+		var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+		$(".education-entry:last").append(formattedName);
 
+		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		$(".education-entry:last").append(formattedDates);
+
+		var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+		$(".education-entry:last").append(formattedLocation);
+
+		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+		$(".education-entry:last").append(formattedDegree);
+
+		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+		$(".education-entry:last").append(formattedMajor);
+	}
+}
+
+displayEducation();
 
 function inName(name) {
 	name = bio.name.trim().split(" ");
@@ -190,7 +233,6 @@ function inName(name) {
 };
 $("#main").append (internationalizeButton);
 
-
-
+$("#mapDiv").append(googleMap);
 
 
