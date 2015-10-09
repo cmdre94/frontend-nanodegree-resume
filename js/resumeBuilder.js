@@ -29,7 +29,7 @@ var bio = {
 	],
 	"welcomeMessage": "Welcome to my resume.",
 	"skills": skills,
-	"biopic": "images/Fry.jpg"
+	"biopic": "images/Clifton2005.jpg"
 }
 
 var work = {
@@ -40,21 +40,21 @@ var work = {
 			"position": "Manager Network Customer Service Centers",
 			"location": "Dallas, TX",
 			"dates": "May 2014 to Present",
-			"description": "Manager of air pressure and cable desk"
+			"description": "Leader of eighteen Customer Service Reresentatives; responsible for screening air pressure alarms and monitoring cable failures on outside plant in AT&T's 21 state footprint. Responsible for training and developement."
 		},
 		{
 			"company": "AT&T",
 			"position": "Customer Service Technician",
 			"location": "Dallas, TX",
 			"dates": "2000 to 2014",
-			"description": "Repaired copper telepone cables"
+			"description": "Responded to air pressure alarms and customer troble reports.  Restored service for individual and group trouble reports."
 		},
 		{
 			"company": "AT&T",
 			"position": "Cable Splicing Technician",
 			"location": "Dallas, TX",
 			"dates": "1996 to 2000",
-			"description": "Spliced new telephone cables from to Central Office to field"
+			"description": "Connected and rearranged twisted pair copper to provide all wireline services offered by AT&T; also to restore service after a major outage."
 		}
 	]
 }
@@ -73,8 +73,8 @@ var education = {
 			"name": "Eastfield College",
 			"dates": "2004 to 2006",
 			"location": "Mesquite, TX",
-			"degree": "Electronic Telecommunications Certificate",
-			"major": "Electronics and Telecommunications"
+			"degree": "Electronic Telecommunications Technical Platform",
+			"major": "Electronics Telecommunications Certificate"
 		}
 	],
 	"onlineCourse": 
@@ -140,21 +140,31 @@ function displayBiopic() {
 
 displayBiopic();
 
-if (bio.skills.length > 0) { 
-	$("#header").append(HTMLskillsStart);
+function displayWelcome() {
+	$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+}	
 
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-	$("#skills").append(formattedSkill);
+displayWelcome();
 
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-	$("#skills").append(formattedSkill);
+function displaySkills() {
+	if (bio.skills.length > 0) { 
+		$("#header").append(HTMLskillsStart);
 
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-	$("#skills").append(formattedSkill);
+		var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+		$("#skills").append(formattedSkill);
 
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-	$("#skills").append(formattedSkill);
+		var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+		$("#skills").append(formattedSkill);
+
+		var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+		$("#skills").append(formattedSkill);
+
+		var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+		$("#skills").append(formattedSkill);
+	}
 }
+
+displaySkills();
 
 function displayWork() {
 	for (job in work.jobs) {
@@ -207,13 +217,21 @@ projects.display = function() {
 
  projects.display();
 
+
+
 function displayEducation() {
 	for (school in education.schools) {
 		$("#education").append(HTMLschoolStart);
 
-		var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
-		$(".education-entry:last").append(formattedName);
-
+		
+		if (education.schools[school].name == "The University of North Texas") {
+		 	var formatteduntName = HTMLmeanGreen.replace("%data%", education.schools[school].name);
+		 	$(".education-entry:last").append(formatteduntName);
+		 	}
+		 else
+			var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+			$(".education-entry:last").append(formattedName);
+ 		
 		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
 		$(".education-entry:last").append(formattedDates);
 
