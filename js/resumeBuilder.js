@@ -29,7 +29,7 @@ var bio = {
 	],
 	"welcomeMessage": "Welcome to my resume.",
 	"skills": skills,
-	"bioPic": "images/fry.jpg"
+	"biopic": "images/Fry.jpg"
 }
 
 var work = {
@@ -132,6 +132,13 @@ function displayContacts() {
 }
 
 displayContacts();
+
+function displayBiopic() {
+	if (bio.biopic.length > 0)
+	$("#header").append(HTMLbioPic.replace("%data%", bio.biopic));
+}
+
+displayBiopic();
 
 if (bio.skills.length > 0) { 
 	$("#header").append(HTMLskillsStart);
