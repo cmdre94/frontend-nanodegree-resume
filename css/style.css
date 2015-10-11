@@ -14,6 +14,11 @@ h6 {
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  max-width: 1050px;
+  margin: auto;
+}
+
 .clear-fix {
   overflow: auto;
 }
@@ -61,6 +66,9 @@ h5 {
 
 }
 
+.project-images {
+  max-width: 400px;
+}
 
 .date-text {
   font-style: italic;
@@ -69,10 +77,9 @@ h5 {
   line-height: 16px;
 }
 
-.school-txt:first-of-type {
+.school-txt {
   color: green;
 }
-
 
 .location-text {
   font-style: italic;
@@ -140,14 +147,19 @@ a {
 .flex-box {
   display: -webkit-flex;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 10px;
+  padding: 0;
 }
 
 .flex-item {
   display:inline-block;
+  margin-right: 5%;
+}
+
+.flex-item:last-of-type {
+  margin-right: 0;
 }
 
 .center-content {
@@ -162,7 +174,6 @@ ul {
   float: left;
   padding: 10px;
   width: 200px;
-  display: none;
 }
 
 img {
@@ -175,6 +186,10 @@ span {
 
 #lets-connect {
   text-align: center;
+}
+
+#footerContacts {
+  display: inline;
 }
 
 /* Media queries to handle various device widths */
@@ -225,4 +240,19 @@ span {
     display: block;
   }
 
+}
+
+@media only screen and (max-width: 450px) {
+  .flex-box {
+    display: none;
+  }
+  .flex-item {
+    display: flex;
+  }
+  h1 {
+    display: block;
+  }
+  .project-images {
+    max-width: 300px;
+}
 }

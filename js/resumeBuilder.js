@@ -24,10 +24,10 @@ var bio = {
 			"email": "cam94@att.net",
 			"github": "cmdre94",
 			"twitter": "@CCamauldin",
-			"location": "Mansfield, TX"	
+			"location": "Dallas, TX"	
 		}	
 	],
-	"welcomeMessage": "Welcome to my resume.",
+	"welcomeMessage": "Welcome to my resume",
 	"skills": skills,
 	"biopic": "images/Clifton2005.jpg"
 }
@@ -91,22 +91,22 @@ var projects = {
 	"projects" :
 	[
 		{
-			"title" : "Project1",
-			"dates" : "December 2005",
-			"description" : "Photo of some stuff",
-			"images" : "images/Fry.jpg"
+			"title" : "Damaged Cable",
+			"dates" : "September 2012",
+			"description" : "This is a damaged twisted pair copper cable.  The insulation on the wires is paper.  The cable is pressurized to keep water out if there is a leak.  Telephone cables are monitored by transducers.  When this cable was damaged, it generated an alarm.  As a technician, I was dispatched to find the cause of the alarm and make repairs.",
+			"images" : "images/Corsicana.jpg"
 		},
 		{
-			"title" : "Project2",
-			"dates" : "December 2005",
-			"description" : "Photo of some stuff",
-			"images" : "images/Fry.jpg" 
+			"title" : "Road Widening Project",
+			"dates" : "September 2012",
+			"description" : "Onsite Hwy 183 road widening project: A contractor damaged a telepone cable that was buried under the highway.  Luckily the contractor admitted to damaging the cable and showed me where it was located.",
+			"images" : "images/Euless.jpg" 
 		},
 		{
-			"title" : "Project3",
+			"title" : "Copper Theft",
 			"dates" : "December 2005",
-			"description" : "Photo of some stuff",
-			"images" : "images/Fry.jpg"
+			"description" : "Copper theft is a problem that affects AT&T to this day.  These cables are in an off-road eavsment.  Since they were pressurized, an alarm was generated when the cables were cut.  Being that I was the air pressure tech, I was the first responder.",
+			"images" : "images/Federal.jpg"
 		}
 	]
 }
@@ -115,18 +115,23 @@ function displayContacts() {
 	for (contact in bio.contacts) {
 		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts[contact].mobile);
 		$("#header").append(formattedMobile);
+		$("#footerContacts").append(formattedMobile);
 
 		var formattedEmail = HTMLemail.replace("%data%", bio.contacts[contact].email);
 		$("#header").append(formattedEmail);
+		$("#footerContacts").append(formattedEmail);
 
 		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts[contact].github);
 		$("#header").append(formattedGithub);
+		$("#footerContacts").append(formattedGithub);
 
 		var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts[contact].twitter);
 		$("#header").append(formattedTwitter);
+		$("#footerContacts").append(formattedTwitter);
 
 		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts[contact].location);
 		$("#header").append(formattedLocation);
+		$("#footerContacts").append(formattedLocation);
 
 	}
 }
@@ -259,5 +264,7 @@ function inName(name) {
 $("#main").append (internationalizeButton);
 
 $("#mapDiv").append(googleMap);
+
+
 
 
