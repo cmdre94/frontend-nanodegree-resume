@@ -222,8 +222,6 @@ projects.display = function() {
 
  projects.display();
 
-
-
 function displayEducation() {
 	for (school in education.schools) {
 		$("#education").append(HTMLschoolStart);
